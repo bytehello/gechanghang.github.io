@@ -3,5 +3,111 @@ layout: post
 title: "Blog"
 date: 2015-10-03 10:34:11 +0800
 comments: true
-categories: 
+categories:
+
 ---
+
+
+# 线性表 (一)
+## 总览
+本文介绍了**线性表**的算法实现，包括顺序表、链表等
+
+-------------
+
+## 线性表
+
+### 定义
+
+>零个或者多个数据元素的有限序列.
+
+这里需要强调的是两点：**有限** 和 **序列**
+
+### 顺序存储结构
+
+顺序存储相当于我们之前学过的数组，很好理解
+
+#### 定义数据类型
+``` Objective-C
+//用C结构体构建基本的数据类型
+typedef int ElementType;
+typedef struct{
+    ElementType Data[MAXSIZE];
+    int Last;
+}List;
+```
+#### 初始化
+
+```
+int MakeEmpty() {
+List *Ptrl;
+//1.
+Ptrl = (List *)malloc(sizeof(List));
+//2.
+Ptrl->Last = -1;
+return Ptrl;
+}
+```
+1.分配空间，初始化指针
+2.-1标志了此顺序表为空表
+
+#### 查找操作
+```
+int Find(ElementType n,List *Ptrl) {
+	int i = 0;
+	while(i <= Ptrk->Last && Ptrl->Data[i] != n) {
+	++i;
+	}
+	if(i > Ptrl->Last ) {
+		rerurn -1;
+	} 
+	else {
+		return i;
+	}
+}
+```
+
+#### 插入操作
+```
+//插入
+void Insert(ElementType X,int i,List *Ptrl)
+{
+    //如果表满
+    if (Ptrl->Last == MAXSIZE - 1) {
+        printf("表满了");
+        return;
+    }
+    //判断i的值是否合法
+    if (i < 1 || i > Ptrl->Last + 2) {
+        printf("位置不合法");
+        return;
+    }
+    
+    for (int j = Ptrl->Last; j >= i - 1; j--) {
+        Ptrl->Data[j + 1] = Ptrl->Data[j];
+    }
+    Ptrl->Data[i - 1] = X;
+    Ptrl->Last ++;
+    return;
+}
+
+```
+
+#### 删除操作
+
+```
+//删除
+void Delete(int i ,List *Ptrl)
+{
+    //判读i的合法性
+    if (i < 1 || i > Ptrl->Last + 1) {
+        printf("不存在滴%d个元素",i);
+        return;
+    }
+    for (int j = i; j <= Ptrl->Last; j++) {
+        Ptrl->Data[j - 1] = Ptrl->Data[j];
+    }
+    Ptrl->Last--;
+    return;
+}
+
+```
