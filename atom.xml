@@ -4,7 +4,7 @@
   <title><![CDATA[My Octopress Blog]]></title>
   <link href="http://gechanghang.github.io/atom.xml" rel="self"/>
   <link href="http://gechanghang.github.io/"/>
-  <updated>2015-10-03T10:38:02+08:00</updated>
+  <updated>2015-10-03T10:39:25+08:00</updated>
   <id>http://gechanghang.github.io/</id>
   <author>
     <name><![CDATA[Your Name]]></name>
@@ -14,28 +14,10 @@
 
   
   <entry>
-    <title type="html"><![CDATA[MyTestBlog]]></title>
-    <link href="http://gechanghang.github.io/blog/2015/10/03/mytestblog/"/>
-    <updated>2015-10-03T10:37:48+08:00</updated>
-    <id>http://gechanghang.github.io/blog/2015/10/03/mytestblog</id>
-    <content type="html"><![CDATA[
-]]></content>
-  </entry>
-  
-  <entry>
     <title type="html"><![CDATA[Blog]]></title>
     <link href="http://gechanghang.github.io/blog/2015/10/03/blog/"/>
     <updated>2015-10-03T10:34:11+08:00</updated>
     <id>http://gechanghang.github.io/blog/2015/10/03/blog</id>
-    <content type="html"><![CDATA[
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Title]]></title>
-    <link href="http://gechanghang.github.io/blog/2015/10/03/title/"/>
-    <updated>2015-10-03T10:27:25+08:00</updated>
-    <id>http://gechanghang.github.io/blog/2015/10/03/title</id>
     <content type="html"><![CDATA[
 ]]></content>
   </entry>
