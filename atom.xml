@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[My Octopress Blog]]></title>
+  <title><![CDATA[gchang's blog]]></title>
   <link href="http://gechanghang.github.io/atom.xml" rel="self"/>
   <link href="http://gechanghang.github.io/"/>
-  <updated>2015-10-03T10:41:48+08:00</updated>
+  <updated>2015-10-03T11:15:45+08:00</updated>
   <id>http://gechanghang.github.io/</id>
   <author>
-    <name><![CDATA[Your Name]]></name>
+    <name><![CDATA[gchang]]></name>
     
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
@@ -18,7 +18,175 @@
     <link href="http://gechanghang.github.io/blog/2015/10/03/blog/"/>
     <updated>2015-10-03T10:34:11+08:00</updated>
     <id>http://gechanghang.github.io/blog/2015/10/03/blog</id>
-    <content type="html"><![CDATA[<h1>Hello</h1>
+    <content type="html"><![CDATA[<h1>线性表 (一)</h1>
+
+<h2>总览</h2>
+
+<p>本文介绍了<strong>线性表</strong>的算法实现，包括顺序表、链表等</p>
+
+<hr />
+
+<h2>线性表</h2>
+
+<h3>定义</h3>
+
+<blockquote><p>零个或者多个数据元素的有限序列.</p></blockquote>
+
+<p>这里需要强调的是两点：<strong>有限</strong> 和 <strong>序列</strong></p>
+
+<h3>顺序存储结构</h3>
+
+<p>顺序存储相当于我们之前学过的数组，很好理解</p>
+
+<h4>定义数据类型</h4>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='Objective-C'><span class='line'><span class="c1">//用C结构体构建基本的数据类型</span>
+</span><span class='line'><span class="k">typedef</span> <span class="kt">int</span> <span class="n">ElementType</span><span class="p">;</span>
+</span><span class='line'><span class="k">typedef</span> <span class="k">struct</span><span class="p">{</span>
+</span><span class='line'>    <span class="n">ElementType</span> <span class="n">Data</span><span class="p">[</span><span class="n">MAXSIZE</span><span class="p">];</span>
+</span><span class='line'>    <span class="kt">int</span> <span class="n">Last</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span><span class="n">List</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>初始化</h4>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='Objective-C'><span class='line'><span class="kt">int</span> <span class="nf">MakeEmpty</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'><span class="n">List</span> <span class="o">*</span><span class="n">Ptrl</span><span class="p">;</span>
+</span><span class='line'><span class="c1">//1.</span>
+</span><span class='line'><span class="n">Ptrl</span> <span class="o">=</span> <span class="p">(</span><span class="n">List</span> <span class="o">*</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">List</span><span class="p">));</span>
+</span><span class='line'><span class="c1">//2.</span>
+</span><span class='line'><span class="n">Ptrl</span><span class="o">-&gt;</span><span class="n">Last</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+</span><span class='line'><span class="k">return</span> <span class="n">Ptrl</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>1.分配空间，初始化指针
+2.-1标志了此顺序表为空表</p>
+
+<h4>查找操作</h4>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='Objective-C'><span class='line'><span class="kt">int</span> <span class="nf">Find</span><span class="p">(</span><span class="n">ElementType</span> <span class="n">n</span><span class="p">,</span><span class="n">List</span> <span class="o">*</span><span class="n">Ptrl</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">while</span><span class="p">(</span><span class="n">i</span> <span class="o">&lt;=</span> <span class="n">Ptrk</span><span class="o">-&gt;</span><span class="n">Last</span> <span class="o">&amp;&amp;</span> <span class="n">Ptrl</span><span class="o">-&gt;</span><span class="n">Data</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">!=</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="o">++</span><span class="n">i</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>  <span class="k">if</span><span class="p">(</span><span class="n">i</span> <span class="o">&gt;</span> <span class="n">Ptrl</span><span class="o">-&gt;</span><span class="n">Last</span> <span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="n">rerurn</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>  <span class="k">else</span> <span class="p">{</span>
+</span><span class='line'>      <span class="k">return</span> <span class="n">i</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>插入操作</h4>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+</pre></td><td class='code'><pre><code class='Objective-C'><span class='line'><span class="c1">//插入</span>
+</span><span class='line'><span class="kt">void</span> <span class="nf">Insert</span><span class="p">(</span><span class="n">ElementType</span> <span class="n">X</span><span class="p">,</span><span class="kt">int</span> <span class="n">i</span><span class="p">,</span><span class="n">List</span> <span class="o">*</span><span class="n">Ptrl</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="c1">//如果表满</span>
+</span><span class='line'>    <span class="k">if</span> <span class="p">(</span><span class="n">Ptrl</span><span class="o">-&gt;</span><span class="n">Last</span> <span class="o">==</span> <span class="n">MAXSIZE</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="n">printf</span><span class="p">(</span><span class="s">&quot;表满了&quot;</span><span class="p">);</span>
+</span><span class='line'>        <span class="k">return</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="c1">//判断i的值是否合法</span>
+</span><span class='line'>    <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="o">||</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="n">Ptrl</span><span class="o">-&gt;</span><span class="n">Last</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="n">printf</span><span class="p">(</span><span class="s">&quot;位置不合法&quot;</span><span class="p">);</span>
+</span><span class='line'>        <span class="k">return</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">Ptrl</span><span class="o">-&gt;</span><span class="n">Last</span><span class="p">;</span> <span class="n">j</span> <span class="o">&gt;=</span> <span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="n">j</span><span class="o">--</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="n">Ptrl</span><span class="o">-&gt;</span><span class="n">Data</span><span class="p">[</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">Ptrl</span><span class="o">-&gt;</span><span class="n">Data</span><span class="p">[</span><span class="n">j</span><span class="p">];</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="n">Ptrl</span><span class="o">-&gt;</span><span class="n">Data</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">X</span><span class="p">;</span>
+</span><span class='line'>    <span class="n">Ptrl</span><span class="o">-&gt;</span><span class="n">Last</span> <span class="o">++</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">return</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>删除操作</h4>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='Objective-C'><span class='line'><span class="c1">//删除</span>
+</span><span class='line'><span class="kt">void</span> <span class="nf">Delete</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="p">,</span><span class="n">List</span> <span class="o">*</span><span class="n">Ptrl</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="c1">//判读i的合法性</span>
+</span><span class='line'>    <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="o">||</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="n">Ptrl</span><span class="o">-&gt;</span><span class="n">Last</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="n">printf</span><span class="p">(</span><span class="s">&quot;不存在滴%d个元素&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">);</span>
+</span><span class='line'>        <span class="k">return</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;=</span> <span class="n">Ptrl</span><span class="o">-&gt;</span><span class="n">Last</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="n">Ptrl</span><span class="o">-&gt;</span><span class="n">Data</span><span class="p">[</span><span class="n">j</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">Ptrl</span><span class="o">-&gt;</span><span class="n">Data</span><span class="p">[</span><span class="n">j</span><span class="p">];</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="n">Ptrl</span><span class="o">-&gt;</span><span class="n">Last</span><span class="o">--</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">return</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
 ]]></content>
   </entry>
   
