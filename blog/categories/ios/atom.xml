@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: ios | Gchang]]></title>
+  <link href="http://gechanghang.github.io/blog/categories/ios/atom.xml" rel="self"/>
+  <link href="http://gechanghang.github.io/"/>
+  <updated>2015-10-04T23:42:53+08:00</updated>
+  <id>http://gechanghang.github.io/</id>
+  <author>
+    <name><![CDATA[gchang]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[如何使用NSDateFormatter指定时间]]></title>
+    <link href="http://gechanghang.github.io/blog/2015/10/04/ru-he-shi-yong-nsdateformatterzhi-ding-shi-jian/"/>
+    <updated>2015-10-04T23:39:40+08:00</updated>
+    <id>http://gechanghang.github.io/blog/2015/10/04/ru-he-shi-yong-nsdateformatterzhi-ding-shi-jian</id>
+    <content type="html"><![CDATA[<h1>如何指定NSDate的具体时间</h1>
+
+<pre><code>NSString *setDateString = @"2015-01-19";
+NSDateFormatter *parser = [[NSDateFormatter alloc] init];
+    [parser setDateFormat:@"yyyy-MM-dd"];
+NSDate *setDate = [parser dateFromString:setDateString];
+</code></pre>
+]]></content>
+  </entry>
+  
+</feed>

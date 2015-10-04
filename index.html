@@ -7,13 +7,12 @@
 	<meta name="author" content="gchang">
 
 	
-	<meta name="description" content="线性表 (一) 总览 本文介绍了线性表的算法实现，包括顺序表、链表等 线性表 定义 零个或者多个数据元素的有限序列. 这里需要强调的是两点：有限 和 序列 顺序存储结构 顺序存储相当于我们之前学过的数组，很好理解 定义数据类型 1
+	<meta name="description" content="如何指定NSDate的具体时间 1
 2
 3
 4
-5
-6
-//用C结构体构建基本的数据类型 &hellip;">
+NSString *setDateString = @"2015-01-19";
+NSDateFormatter *parser = [[NSDateFormatter alloc] init]; [parser setDateFormat:@" &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -80,6 +79,50 @@
 		
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2015/10/04/ru-he-shi-yong-nsdateformatterzhi-ding-shi-jian/">
+		
+			如何使用NSDateFormatter指定时间</a>
+	</h2>
+	<div class="entry-content">
+		<h1>如何指定NSDate的具体时间</h1>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>NSString *setDateString = @"2015-01-19";
+</span><span class='line'>NSDateFormatter *parser = [[NSDateFormatter alloc] init];
+</span><span class='line'>    [parser setDateFormat:@"yyyy-MM-dd"];
+</span><span class='line'>NSDate *setDate = [parser dateFromString:setDateString];</span></code></pre></td></tr></table></div></figure>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+Oct 4th, 2015</div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/ios/'>ios</a>
+
+
+</div>
+	
+</div>
+</article>
 
 
     <article class="post">

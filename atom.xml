@@ -4,7 +4,7 @@
   <title><![CDATA[Gchang]]></title>
   <link href="http://gechanghang.github.io/atom.xml" rel="self"/>
   <link href="http://gechanghang.github.io/"/>
-  <updated>2015-10-03T11:23:33+08:00</updated>
+  <updated>2015-10-04T23:42:53+08:00</updated>
   <id>http://gechanghang.github.io/</id>
   <author>
     <name><![CDATA[gchang]]></name>
@@ -12,6 +12,25 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[如何使用NSDateFormatter指定时间]]></title>
+    <link href="http://gechanghang.github.io/blog/2015/10/04/ru-he-shi-yong-nsdateformatterzhi-ding-shi-jian/"/>
+    <updated>2015-10-04T23:39:40+08:00</updated>
+    <id>http://gechanghang.github.io/blog/2015/10/04/ru-he-shi-yong-nsdateformatterzhi-ding-shi-jian</id>
+    <content type="html"><![CDATA[<h1>如何指定NSDate的具体时间</h1>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>NSString *setDateString = @"2015-01-19";
+</span><span class='line'>NSDateFormatter *parser = [[NSDateFormatter alloc] init];
+</span><span class='line'>    [parser setDateFormat:@"yyyy-MM-dd"];
+</span><span class='line'>NSDate *setDate = [parser dateFromString:setDateString];</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Blog]]></title>

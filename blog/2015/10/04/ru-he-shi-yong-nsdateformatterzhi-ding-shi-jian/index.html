@@ -3,11 +3,16 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Blog Archives - Gchang</title>
+	<title>如何使用NSDateFormatter指定时间 - Gchang</title>
 	<meta name="author" content="gchang">
 
 	
-	<meta name="description" content=" 2015 如何使用NSDateFormatter指定时间 Oct 4 ios Blog Oct 3 ">
+	<meta name="description" content="如何指定NSDate的具体时间 1
+2
+3
+4
+NSString *setDateString = @"2015-01-19";
+NSDateFormatter *parser = [[NSDateFormatter alloc] init]; [parser setDateFormat:@" &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -73,46 +78,53 @@
 	
 		
 	
-	<div id="content" class="inner">
-	
+	<div id="content" class="inner"><article class="post">
+	<h2 class="title">如何使用NSDateFormatter指定时间</h2>
+	<div class="entry-content"><h1>如何指定NSDate的具体时间</h1>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>NSString *setDateString = @"2015-01-19";
+</span><span class='line'>NSDateFormatter *parser = [[NSDateFormatter alloc] init];
+</span><span class='line'>    [parser setDateFormat:@"yyyy-MM-dd"];
+</span><span class='line'>NSDate *setDate = [parser dateFromString:setDateString];</span></code></pre></td></tr></table></div></figure>
+
+</div>
 
 
-	
-	
-	<section class="archives"><h1 class="year">2015</h1>
+<div class="meta">
+	<div class="date">
 
-<article>
-	<h2 class="title"><a href="/blog/2015/10/04/ru-he-shi-yong-nsdateformatterzhi-ding-shi-jian/">如何使用NSDateFormatter指定时间</a></h2>
-	<div class="meta">
-		<div class="date">Oct  4</div>
-		<div class="tags">
+
+
+
+Oct 4th, 2015</div>
+	<div class="tags">
 
 
 	<a class='category' href='/blog/categories/ios/'>ios</a>
 
 
 </div>
-	    
-	</div>
-</article>
 	
-
-	
-
-
-<article>
-	<h2 class="title"><a href="/blog/2015/10/03/blog/">Blog</a></h2>
-	<div class="meta">
-		<div class="date">Oct  3</div>
-		<div class="tags">
-
 </div>
-	    
-	</div>
 </article>
+
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+		
+		
+		<a class="addthis_button_tweet"></a>
+		
+		
+		
+	</div>
 	
-	</section>
-	
+</div>
+
+
 </div>
 	<footer id="footer" class="inner">Copyright &copy; 2015
 
