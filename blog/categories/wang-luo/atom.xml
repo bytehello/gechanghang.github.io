@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: 网络 | Gchang]]></title>
+  <link href="http://gechanghang.github.io/blog/categories/wang-luo/atom.xml" rel="self"/>
+  <link href="http://gechanghang.github.io/"/>
+  <updated>2015-10-22T14:58:04+08:00</updated>
+  <id>http://gechanghang.github.io/</id>
+  <author>
+    <name><![CDATA[gchang]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[HTTP简要]]></title>
+    <link href="http://gechanghang.github.io/blog/2015/10/22/httpjian-yao/"/>
+    <updated>2015-10-22T14:56:42+08:00</updated>
+    <id>http://gechanghang.github.io/blog/2015/10/22/httpjian-yao</id>
+    <content type="html"><![CDATA[<h1>HTTP协议简要</h1>
+
+<p>HTTP是开发中经常用到的从网路获取数据的一种通信协议。</p>
+
+<h2>HTTP简单介绍</h2>
+
+<p>在移动开发中，client（手机端）是发送消息给server（服务器），而且永远是手机端发送给服务器端。手机端不向服务器发送数据，服务器也就不会返回数据</p>
+
+<p>跟SOCKET最主要的区别就是：socket是一种手机端和服务器端的连接不断开的协议，打个比方，QQ的服务器会与手机建立socket通信，确保一有消息，就会发送给客户端。</p>
+
+<h2>HTTP请求</h2>
+
+<p>HTTP主要常用分为两种
+- GET : 就是从服务器索取数据
+- POST : 提交数据给服务器，让服务器返回数据</p>
+
+<p><strong>HTTP的请求格式如下</strong>
+<code>
+&lt;request-line&gt;
+&lt;request-header&gt;
+&lt;blank-line&gt;
+&lt;request-body&gt;
+</code>
+说明:第一行必须是一个请求行(request-line),用来说明请求类型,要访问的资源以及所使用的HTTP版本.
+ 紧接着是一个首部(header)小节,用来说明服务器要使用的附加信息.
+  之后是一个空行.
+再后面可以添加任意的其他数据<strong>称之为主体(body)</strong>.</p>
+
+<p>HTTP请求包含了<strong>请求头(header)</strong> 和 <strong>请求体(body)</strong>
+body只有对POST才有效。
+请求头里面包括了一些请求的参数，是以<strong>key:value</strong>的形式
+形如
+<code>
+Accept: text/html
+Accept-Charset: GBK,utf-8
+Accept-Encoding: gzip.deflate
+Accept-Language:zh-CN,zh;
+</code>
+而请求体包含了要提交给服务器的数据，形如
+<code>
+username=gch&amp;pwd=gechanghang
+</code></p>
+
+<h2>HTTP响应</h2>
+
+<p>与请求相对应的就是响应，同样的，也包括了响应头和响应体。</p>
+
+<p><strong>HTTP响应格式如下</strong>
+<code>
+&lt;status-line&gt;
+&lt;header&gt;
+&lt;blank-line&gt;
+&lt;body&gt;
+</code>
+HTTP状态码如果为200，则表示为一切正常。</p>
+]]></content>
+  </entry>
+  
+</feed>

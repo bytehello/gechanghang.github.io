@@ -7,8 +7,7 @@
 	<meta name="author" content="gchang">
 
 	
-	<meta name="description" content="Effective Objective-C 2.0 tips_1 Objective-C 是C语言的超集，C语言可用的语法在OC中也是适用的。 C和OC的区别 C语言是函数调用，OC是消息发送
-由第一点而来的不同就是：C语言这种采用函数调用的语言，是在运行时采用“虚方法表” &hellip;">
+	<meta name="description" content="HTTP协议简要 HTTP是开发中经常用到的从网路获取数据的一种通信协议。 HTTP简单介绍 在移动开发中，client（手机端）是发送消息给server（服务器），而且永远是手机端发送给服务器端。手机端不向服务器发送数据，服务器也就不会返回数据 跟SOCKET最主要的区别就是： &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -75,6 +74,110 @@
 		
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2015/10/22/httpjian-yao/">
+		
+			HTTP简要</a>
+	</h2>
+	<div class="entry-content">
+		<h1>HTTP协议简要</h1>
+
+<p>HTTP是开发中经常用到的从网路获取数据的一种通信协议。</p>
+
+<h2>HTTP简单介绍</h2>
+
+<p>在移动开发中，client（手机端）是发送消息给server（服务器），而且永远是手机端发送给服务器端。手机端不向服务器发送数据，服务器也就不会返回数据</p>
+
+<p>跟SOCKET最主要的区别就是：socket是一种手机端和服务器端的连接不断开的协议，打个比方，QQ的服务器会与手机建立socket通信，确保一有消息，就会发送给客户端。</p>
+
+<h2>HTTP请求</h2>
+
+<p>HTTP主要常用分为两种
+- GET : 就是从服务器索取数据
+- POST : 提交数据给服务器，让服务器返回数据</p>
+
+<p><strong>HTTP的请求格式如下</strong></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;request-line&gt;
+</span><span class='line'>&lt;request-header&gt;
+</span><span class='line'>&lt;blank-line&gt;
+</span><span class='line'>&lt;request-body&gt;</span></code></pre></td></tr></table></div></figure>
+
+
+<p>说明:第一行必须是一个请求行(request-line),用来说明请求类型,要访问的资源以及所使用的HTTP版本.
+ 紧接着是一个首部(header)小节,用来说明服务器要使用的附加信息.
+  之后是一个空行.
+再后面可以添加任意的其他数据<strong>称之为主体(body)</strong>.</p>
+
+<p>HTTP请求包含了<strong>请求头(header)</strong> 和 <strong>请求体(body)</strong>
+body只有对POST才有效。
+请求头里面包括了一些请求的参数，是以<strong>key:value</strong>的形式
+形如</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Accept: text/html
+</span><span class='line'>Accept-Charset: GBK,utf-8
+</span><span class='line'>Accept-Encoding: gzip.deflate
+</span><span class='line'>Accept-Language:zh-CN,zh;</span></code></pre></td></tr></table></div></figure>
+
+
+<p>而请求体包含了要提交给服务器的数据，形如</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>username=gch&pwd=gechanghang</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>HTTP响应</h2>
+
+<p>与请求相对应的就是响应，同样的，也包括了响应头和响应体。</p>
+
+<p><strong>HTTP响应格式如下</strong></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;status-line&gt;
+</span><span class='line'>&lt;header&gt;
+</span><span class='line'>&lt;blank-line&gt;
+</span><span class='line'>&lt;body&gt;</span></code></pre></td></tr></table></div></figure>
+
+
+<p>HTTP状态码如果为200，则表示为一切正常。</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+Oct 22nd, 2015</div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/wang-luo/'>网络</a>
+
+
+</div>
+	
+</div>
+</article>
 
 
     <article class="post">
